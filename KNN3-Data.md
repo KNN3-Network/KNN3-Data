@@ -22,8 +22,8 @@
     - [4.5 lens_publication_comment_view](#45-lens_publication_comment_view)
     - [4.6 lens_publication_mirror_view](#46-lens_publication_mirror_view)
     - [4.7 lens_publication_post_view](#47-lens_publication_post_view)
-    - [4.8 polygon_lens_overall_level](#48-polygon_lens_overall_level)
-    - [4.9 polygon_lens_overall_score](#49-polygon_lens_overall_score)
+    - [4.8 lens_overall_score_view](#48-lens_overall_score_view)
+    - [4.9 lens_overall_level_view](#49-lens_overall_level_view)
 
 ## 1. Asset Holding
 ### 1.1 polygon_nft_hold
@@ -157,8 +157,6 @@
 |  5 | followee         | varchar(255) | YES    | MUL   |           |         |        |
 |  6 | timestamp        | int(11)      | YES    | MUL   |           |         |        |
 ### 4.3 lens_post_view
-Summary statistics of Lens posts
-
 |    | Field               | Type         | Null   | Key   | Default   | Extra   | Desc   |
 |---:|:--------------------|:-------------|:-------|:------|:----------|:--------|:-------|
 |  0 | user_id             | bigint(20)   | NO     | PRI   |           |         |        |
@@ -174,9 +172,8 @@ Summary statistics of Lens posts
 | 10 | type                | varchar(255) | YES    |       |           |         |        |
 | 11 | comment_count       | bigint(21)   | YES    |       |           |         |        |
 | 12 | mirror_count        | bigint(21)   | YES    |       |           |         |        |
-| 13 | content             | longtext     | YES    |       |           |         |        |
-| 14 | image               | varchar(255) | YES    |       |           |         |        |
-| 15 | imageMimeType       | varchar(255) | YES    |       |           |         |        |
+| 13 | image               | varchar(255) | YES    |       |           |         |        |
+| 14 | imageMimeType       | varchar(255) | YES    |       |           |         |        |
 ### 4.4 lens_publication_view
 |    | Field         | Type         | Null   | Key   | Default   | Extra   | Desc   |
 |---:|:--------------|:-------------|:-------|:------|:----------|:--------|:-------|
@@ -229,66 +226,64 @@ Summary statistics of Lens posts
 |  4 | rootProfileId | bigint(20)   | YES    | MUL   |           |         |        |
 |  5 | rootPubId     | int(11)      | YES    | MUL   |           |         |        |
 |  6 | contentURI    | text         | YES    |       |           |         |        |
-|  7 | content       | longtext     | YES    |       |           |         |        |
-|  8 | rootAddress   | varchar(255) | YES    | MUL   |           |         |        |
-|  9 | rootHandle    | varchar(255) | YES    | MUL   |           |         |        |
-| 10 | type          | varchar(255) | YES    |       |           |         |        |
-| 11 | timestamp     | int(11)      | YES    | MUL   |           |         |        |
-### 4.8 polygon_lens_overall_level
-|    | Field               | Type         | Null   | Key   | Default   | Extra   | Desc           |
-|---:|:--------------------|:-------------|:-------|:------|:----------|:--------|:---------------|
-|  0 | node                | varchar(200) | NO     | PRI   |           |         | profileId      |
-|  1 | address             | varchar(200) | YES    |       |           |         |                |
-|  2 | influ_level         | bigint(20)   | YES    |       |           |         |                |
-|  3 | influ_level_str     | varchar(10)  | YES    |       |           |         |                |
-|  4 | compaign_level      | bigint(20)   | YES    |       |           |         |                |
-|  5 | compaign_level_str  | varchar(10)  | YES    |       |           |         |                |
-|  6 | engager_level       | bigint(20)   | YES    |       |           |         |                |
-|  7 | engager_level_str   | varchar(10)  | YES    |       |           |         |                |
-|  8 | creator_level       | bigint(20)   | YES    |       |           |         |                |
-|  9 | creator_level_str   | varchar(10)  | YES    |       |           |         |                |
-| 10 | collector_level     | bigint(20)   | YES    |       |           |         |                |
-| 11 | collector_level_str | varchar(10)  | YES    |       |           |         |                |
-| 12 | curator_level       | bigint(20)   | YES    |       |           |         |                |
-| 13 | curator_level_str   | varchar(10)  | YES    |       |           |         |                |
-| 14 | overall_level_score | double       | YES    |       |           |         |                |
-| 15 | overall_level_rank  | bigint(20)   | YES    |       |           |         |                |
-| 16 | overall_level       | bigint(20)   | YES    |       |           |         |                |
-| 17 | overall_level_str   | varchar(10)  | YES    |       |           |         |                |
-| 18 | insert_date         | varchar(10)  | NO     | PRI   |           |         |                |
-### 4.9 polygon_lens_overall_score
-|    | Field                     | Type         | Null   | Key   | Default   | Extra   | Desc      |
-|---:|:--------------------------|:-------------|:-------|:------|:----------|:--------|:----------|
-|  0 | node                      | varchar(200) | NO     | PRI   |           |         | profileId |
-|  1 | address                   | varchar(200) | YES    | MUL   |           |         |           |
-|  2 | pr_value_influ            | double       | YES    |       |           |         |           |
-|  3 | pr_score_influ            | double       | YES    |       |           |         |           |
-|  4 | pr_rank_influ             | bigint(20)   | YES    | MUL   |           |         |           |
-|  5 | pr_value_comment_compaign | double       | YES    |       |           |         |           |
-|  6 | pr_score_comment_compaign | double       | YES    |       |           |         |           |
-|  7 | pr_rank_comment_compaign  | bigint(20)   | YES    |       |           |         |           |
-|  8 | pr_value_mirror_compaign  | double       | YES    |       |           |         |           |
-|  9 | pr_score_mirror_compaign  | double       | YES    |       |           |         |           |
-| 10 | pr_rank_mirror_compaign   | bigint(20)   | YES    |       |           |         |           |
-| 11 | pr_score_compaign         | double       | YES    |       |           |         |           |
-| 12 | pr_rank_compaign          | bigint(20)   | YES    | MUL   |           |         |           |
-| 13 | pr_value_comment_engager  | double       | YES    |       |           |         |           |
-| 14 | pr_score_comment_engager  | double       | YES    |       |           |         |           |
-| 15 | pr_rank_comment_engager   | bigint(20)   | YES    |       |           |         |           |
-| 16 | pr_value_mirror_engager   | double       | YES    |       |           |         |           |
-| 17 | pr_score_mirror_engager   | double       | YES    |       |           |         |           |
-| 18 | pr_rank_mirror_engager    | bigint(20)   | YES    |       |           |         |           |
-| 19 | pr_score_engager          | double       | YES    |       |           |         |           |
-| 20 | pr_rank_engager           | bigint(20)   | YES    | MUL   |           |         |           |
-| 21 | pr_value_creator          | double       | YES    |       |           |         |           |
-| 22 | pr_score_creator          | double       | YES    |       |           |         |           |
-| 23 | pr_rank_creator           | bigint(20)   | YES    | MUL   |           |         |           |
-| 24 | pr_value_collector        | double       | YES    |       |           |         |           |
-| 25 | pr_score_collector        | double       | YES    |       |           |         |           |
-| 26 | pr_rank_collector         | bigint(20)   | YES    | MUL   |           |         |           |
-| 27 | curator_score             | bigint(20)   | YES    |       |           |         |           |
-| 28 | curator_rank              | bigint(20)   | YES    | MUL   |           |         |           |
-| 29 | overall_score             | double       | YES    |       |           |         |           |
-| 30 | overall_rank              | bigint(20)   | YES    | MUL   |           |         |           |
-| 31 | insert_date               | varchar(10)  | NO     | PRI   |           |         |           |
-
+|  7 | rootAddress   | varchar(255) | YES    | MUL   |           |         |        |
+|  8 | rootHandle    | varchar(255) | YES    | MUL   |           |         |        |
+|  9 | type          | varchar(255) | YES    |       |           |         |        |
+| 10 | timestamp     | int(11)      | YES    | MUL   |           |         |        |
+### 4.8 lens_overall_score_view
+|    | Field                     | Type         | Null   | Key   | Default   | Extra   | Desc   |
+|---:|:--------------------------|:-------------|:-------|:------|:----------|:--------|:-------|
+|  0 | profileId                 | varchar(200) | NO     | PRI   |           |         |        |
+|  1 | address                   | varchar(200) | YES    | MUL   |           |         |        |
+|  2 | pr_value_influ            | double       | YES    |       |           |         |        |
+|  3 | pr_score_influ            | double       | YES    |       |           |         |        |
+|  4 | pr_rank_influ             | bigint(20)   | YES    | MUL   |           |         |        |
+|  5 | pr_value_comment_compaign | double       | YES    |       |           |         |        |
+|  6 | pr_score_comment_compaign | double       | YES    |       |           |         |        |
+|  7 | pr_rank_comment_compaign  | bigint(20)   | YES    |       |           |         |        |
+|  8 | pr_value_mirror_compaign  | double       | YES    |       |           |         |        |
+|  9 | pr_score_mirror_compaign  | double       | YES    |       |           |         |        |
+| 10 | pr_rank_mirror_compaign   | bigint(20)   | YES    |       |           |         |        |
+| 11 | pr_score_compaign         | double       | YES    |       |           |         |        |
+| 12 | pr_rank_compaign          | bigint(20)   | YES    | MUL   |           |         |        |
+| 13 | pr_value_comment_engager  | double       | YES    |       |           |         |        |
+| 14 | pr_score_comment_engager  | double       | YES    |       |           |         |        |
+| 15 | pr_rank_comment_engager   | bigint(20)   | YES    |       |           |         |        |
+| 16 | pr_value_mirror_engager   | double       | YES    |       |           |         |        |
+| 17 | pr_score_mirror_engager   | double       | YES    |       |           |         |        |
+| 18 | pr_rank_mirror_engager    | bigint(20)   | YES    |       |           |         |        |
+| 19 | pr_score_engager          | double       | YES    |       |           |         |        |
+| 20 | pr_rank_engager           | bigint(20)   | YES    | MUL   |           |         |        |
+| 21 | pr_value_creator          | double       | YES    |       |           |         |        |
+| 22 | pr_score_creator          | double       | YES    |       |           |         |        |
+| 23 | pr_rank_creator           | bigint(20)   | YES    | MUL   |           |         |        |
+| 24 | pr_value_collector        | double       | YES    |       |           |         |        |
+| 25 | pr_score_collector        | double       | YES    |       |           |         |        |
+| 26 | pr_rank_collector         | bigint(20)   | YES    | MUL   |           |         |        |
+| 27 | curator_score             | bigint(20)   | YES    |       |           |         |        |
+| 28 | curator_rank              | bigint(20)   | YES    | MUL   |           |         |        |
+| 29 | overall_score             | double       | YES    |       |           |         |        |
+| 30 | overall_rank              | bigint(20)   | YES    | MUL   |           |         |        |
+| 31 | insert_date               | varchar(10)  | NO     | PRI   |           |         |        |
+### 4.9 lens_overall_level_view
+|    | Field               | Type         | Null   | Key   | Default   | Extra   | Desc   |
+|---:|:--------------------|:-------------|:-------|:------|:----------|:--------|:-------|
+|  0 | profileId           | varchar(200) | NO     | PRI   |           |         |        |
+|  1 | insert_date         | varchar(10)  | NO     | PRI   |           |         |        |
+|  2 | overall_level_str   | varchar(10)  | YES    |       |           |         |        |
+|  3 | overall_level       | bigint(20)   | YES    |       |           |         |        |
+|  4 | overall_level_rank  | bigint(20)   | YES    |       |           |         |        |
+|  5 | overall_level_score | double       | YES    |       |           |         |        |
+|  6 | address             | varchar(200) | YES    |       |           |         |        |
+|  7 | influ_level         | bigint(20)   | YES    |       |           |         |        |
+|  8 | influ_level_str     | varchar(10)  | YES    |       |           |         |        |
+|  9 | compaign_level      | bigint(20)   | YES    |       |           |         |        |
+| 10 | engager_level       | bigint(20)   | YES    |       |           |         |        |
+| 11 | compaign_level_str  | varchar(10)  | YES    |       |           |         |        |
+| 12 | engager_level_str   | varchar(10)  | YES    |       |           |         |        |
+| 13 | creator_level       | bigint(20)   | YES    |       |           |         |        |
+| 14 | creator_level_str   | varchar(10)  | YES    |       |           |         |        |
+| 15 | collector_level     | bigint(20)   | YES    |       |           |         |        |
+| 16 | collector_level_str | varchar(10)  | YES    |       |           |         |        |
+| 17 | curator_level       | bigint(20)   | YES    |       |           |         |        |
+| 18 | curator_level_str   | varchar(10)  | YES    |       |           |         |        |

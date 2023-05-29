@@ -85,7 +85,7 @@ group by
 ### 2.1 Top 10 commented post on Lens
 ``` sql
 select
-  content,
+  post_id,
   comment_count,
   type
 from
@@ -101,7 +101,7 @@ limit
 ### 2.2 Top 10 mirrored post on Lens
 ``` sql
 select
-  content,
+  post_id,
   mirror_count,
   type
 from
