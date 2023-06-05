@@ -7,10 +7,10 @@ SQL templates provided by K.Transformer are pre-built examples that can be used 
     - [1.3 Number of proposals of an address in space](#13-number-of-proposals-of-an-address-in-space)
     - [1.4 Get spaces where an address is admin](#14-get-spaces-where-an-address-is-admin)
     - [1.5 Get space stats over time](#15-get-space-stats-over-time)
-  - [2.Lens](#2-lens)
-    - [2.1 Top 10 commented post on Lens](#21-top-10-commented-post-on-lens)
-    - [2.2 Top 10 mirrored post on Lens](#22-top-10-mirrored-post-on-lens)
-    - [2.3 Number of posts over time](#23-number-of-posts-over-time)
+  - [2.Lens Protocol](#2-lens-protocol)
+    - [2.1 Top 10 commented publications on Lens](#21-top-10-commented-publications-on-lens)
+    - [2.2 Top 10 mirrored publications on Lens](#22-top-10-mirrored-publications-on-lens)
+    - [2.3 Number of publications over time](#23-number-of-publications-over-time)
     - [2.4 Lens handle ranks over time](#24-lens-handle-ranks-over-time)
     - [2.5 Follower quality on Lens](#25-follower-quality-on-lens)
 
@@ -81,8 +81,8 @@ group by
   date(created)
 ```
 
-## 2. Lens
-### 2.1 Top 10 commented post on Lens
+## 2. Lens Protocol
+### 2.1 Top 10 commented publications on Lens
 ``` sql
 select
   post_id,
@@ -98,7 +98,7 @@ limit
   10
 ```
 
-### 2.2 Top 10 mirrored post on Lens
+### 2.2 Top 10 mirrored publications on Lens
 ``` sql
 select
   post_id,
@@ -114,7 +114,7 @@ limit
   10
 ```
 
-### 2.3 Number of posts over time
+### 2.3 Number of publications over time
 ``` sql
 SELECT
   DATE(from_unixtime(timestamp)) as date,
@@ -149,35 +149,20 @@ ORDER BY
 ### 2.4 Lens handle ranks over time
 ``` sql
 select
-  t2.handle,
+  handle,
   overall_rank,
-  influence_rank,
-  collector_rank,
-  campaign_rank,
-  engager_rank,
-  creator_rank,
+  pr_rank_influ as influence_rank,
+  pr_rank_collector as collector_rank,
+  pr_rank_compaign as campaign_rank,
+  pr_rank_creator as creator_rank,
+  pr_rank_engager as engager_rank,
   curator_rank,
   insert_date
 from
-  (
-    select
-      node,
-      overall_rank,
-      pr_rank_influ as influence_rank,
-      pr_rank_collector as collector_rank,
-      pr_rank_compaign as campaign_rank,
-      pr_rank_creator as creator_rank,
-      pr_rank_engager as engager_rank,
-      curator_rank,
-      insert_date
-    from
-      polygon_lens_overall_score
-    where
-      insert_date >= current_date() - INTERVAL 7 DAY
-  ) t1
-  left join lens_profile_view t2 on t1.node = t2.profileId
+  lens_overall_score_view
 where
-  t2.handle = 'knn3_network.lens'
+  insert_date >= current_date() - INTERVAL 7 DAY
+  and handle = 'knn3_network.lens'
 ```
 
 ### 2.5 Follower quality on Lens
@@ -205,7 +190,7 @@ from
   ) t1
   left join (
     select
-      node,
+      handle,
       influ_level_str as influence_level,
       collector_level_str as collector_level,
       engager_level_str as engager_level,
@@ -214,8 +199,8 @@ from
       curator_level_str as curator_level,
       overall_level_str as overall_level
     from
-      polygon_lens_overall_level
+      lens_overall_level_view
     where
       insert_date = current_date()
-  ) t2 on t1.follower_id = t2.node
+  ) t2 on t1.follower = t2.handle
 ```
