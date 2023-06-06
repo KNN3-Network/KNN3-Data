@@ -86,7 +86,7 @@ group by
 ``` sql
 select
   post_id,
-  comment_count,
+  COALESCE(comment_count, 0) AS comment_count,
   type
 from
   lens_post_view
@@ -102,7 +102,7 @@ limit
 ``` sql
 select
   post_id,
-  mirror_count,
+  COALESCE(mirror_count, 0) AS mirror_count,
   type
 from
   lens_post_view
