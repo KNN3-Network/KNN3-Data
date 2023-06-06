@@ -234,56 +234,58 @@
 |    | Field                     | Type         | Null   | Key   | Default   | Extra   | Desc   |
 |---:|:--------------------------|:-------------|:-------|:------|:----------|:--------|:-------|
 |  0 | profileId                 | varchar(200) | NO     | PRI   |           |         |        |
-|  1 | address                   | varchar(200) | YES    | MUL   |           |         |        |
-|  2 | pr_value_influ            | double       | YES    |       |           |         |        |
-|  3 | pr_score_influ            | double       | YES    |       |           |         |        |
-|  4 | pr_rank_influ             | bigint(20)   | YES    | MUL   |           |         |        |
-|  5 | pr_value_comment_compaign | double       | YES    |       |           |         |        |
-|  6 | pr_score_comment_compaign | double       | YES    |       |           |         |        |
-|  7 | pr_rank_comment_compaign  | bigint(20)   | YES    |       |           |         |        |
-|  8 | pr_value_mirror_compaign  | double       | YES    |       |           |         |        |
-|  9 | pr_score_mirror_compaign  | double       | YES    |       |           |         |        |
-| 10 | pr_rank_mirror_compaign   | bigint(20)   | YES    |       |           |         |        |
-| 11 | pr_score_compaign         | double       | YES    |       |           |         |        |
-| 12 | pr_rank_compaign          | bigint(20)   | YES    | MUL   |           |         |        |
-| 13 | pr_value_comment_engager  | double       | YES    |       |           |         |        |
-| 14 | pr_score_comment_engager  | double       | YES    |       |           |         |        |
-| 15 | pr_rank_comment_engager   | bigint(20)   | YES    |       |           |         |        |
-| 16 | pr_value_mirror_engager   | double       | YES    |       |           |         |        |
-| 17 | pr_score_mirror_engager   | double       | YES    |       |           |         |        |
-| 18 | pr_rank_mirror_engager    | bigint(20)   | YES    |       |           |         |        |
-| 19 | pr_score_engager          | double       | YES    |       |           |         |        |
-| 20 | pr_rank_engager           | bigint(20)   | YES    | MUL   |           |         |        |
-| 21 | pr_value_creator          | double       | YES    |       |           |         |        |
-| 22 | pr_score_creator          | double       | YES    |       |           |         |        |
-| 23 | pr_rank_creator           | bigint(20)   | YES    | MUL   |           |         |        |
-| 24 | pr_value_collector        | double       | YES    |       |           |         |        |
-| 25 | pr_score_collector        | double       | YES    |       |           |         |        |
-| 26 | pr_rank_collector         | bigint(20)   | YES    | MUL   |           |         |        |
-| 27 | curator_score             | bigint(20)   | YES    |       |           |         |        |
-| 28 | curator_rank              | bigint(20)   | YES    | MUL   |           |         |        |
-| 29 | overall_score             | double       | YES    |       |           |         |        |
-| 30 | overall_rank              | bigint(20)   | YES    | MUL   |           |         |        |
-| 31 | insert_date               | varchar(10)  | NO     | PRI   |           |         |        |
+|  1 | handle                    | varchar(255) | YES    | MUL   |           |         |        |
+|  2 | address                   | varchar(200) | YES    | MUL   |           |         |        |
+|  3 | pr_value_influ            | double       | YES    |       |           |         |        |
+|  4 | pr_score_influ            | double       | YES    |       |           |         |        |
+|  5 | pr_rank_influ             | bigint(20)   | YES    | MUL   |           |         |        |
+|  6 | pr_value_comment_compaign | double       | YES    |       |           |         |        |
+|  7 | pr_score_comment_compaign | double       | YES    |       |           |         |        |
+|  8 | pr_rank_comment_compaign  | bigint(20)   | YES    |       |           |         |        |
+|  9 | pr_value_mirror_compaign  | double       | YES    |       |           |         |        |
+| 10 | pr_score_mirror_compaign  | double       | YES    |       |           |         |        |
+| 11 | pr_rank_mirror_compaign   | bigint(20)   | YES    |       |           |         |        |
+| 12 | pr_score_compaign         | double       | YES    |       |           |         |        |
+| 13 | pr_rank_compaign          | bigint(20)   | YES    | MUL   |           |         |        |
+| 14 | pr_value_comment_engager  | double       | YES    |       |           |         |        |
+| 15 | pr_score_comment_engager  | double       | YES    |       |           |         |        |
+| 16 | pr_rank_comment_engager   | bigint(20)   | YES    |       |           |         |        |
+| 17 | pr_value_mirror_engager   | double       | YES    |       |           |         |        |
+| 18 | pr_score_mirror_engager   | double       | YES    |       |           |         |        |
+| 19 | pr_rank_mirror_engager    | bigint(20)   | YES    |       |           |         |        |
+| 20 | pr_score_engager          | double       | YES    |       |           |         |        |
+| 21 | pr_rank_engager           | bigint(20)   | YES    | MUL   |           |         |        |
+| 22 | pr_value_creator          | double       | YES    |       |           |         |        |
+| 23 | pr_score_creator          | double       | YES    |       |           |         |        |
+| 24 | pr_rank_creator           | bigint(20)   | YES    | MUL   |           |         |        |
+| 25 | pr_value_collector        | double       | YES    |       |           |         |        |
+| 26 | pr_score_collector        | double       | YES    |       |           |         |        |
+| 27 | pr_rank_collector         | bigint(20)   | YES    | MUL   |           |         |        |
+| 28 | curator_score             | bigint(20)   | YES    |       |           |         |        |
+| 29 | curator_rank              | bigint(20)   | YES    | MUL   |           |         |        |
+| 30 | overall_score             | double       | YES    |       |           |         |        |
+| 31 | overall_rank              | bigint(20)   | YES    | MUL   |           |         |        |
+| 32 | insert_date               | varchar(10)  | NO     | PRI   |           |         |        |
 ### 4.9 lens_overall_level_view
 |    | Field               | Type         | Null   | Key   | Default   | Extra   | Desc   |
 |---:|:--------------------|:-------------|:-------|:------|:----------|:--------|:-------|
 |  0 | profileId           | varchar(200) | NO     | PRI   |           |         |        |
-|  1 | insert_date         | varchar(10)  | NO     | PRI   |           |         |        |
-|  2 | overall_level_str   | varchar(10)  | YES    |       |           |         |        |
-|  3 | overall_level       | bigint(20)   | YES    |       |           |         |        |
-|  4 | overall_level_rank  | bigint(20)   | YES    |       |           |         |        |
-|  5 | overall_level_score | double       | YES    |       |           |         |        |
-|  6 | address             | varchar(200) | YES    |       |           |         |        |
-|  7 | influ_level         | bigint(20)   | YES    |       |           |         |        |
-|  8 | influ_level_str     | varchar(10)  | YES    |       |           |         |        |
-|  9 | compaign_level      | bigint(20)   | YES    |       |           |         |        |
-| 10 | engager_level       | bigint(20)   | YES    |       |           |         |        |
-| 11 | compaign_level_str  | varchar(10)  | YES    |       |           |         |        |
-| 12 | engager_level_str   | varchar(10)  | YES    |       |           |         |        |
-| 13 | creator_level       | bigint(20)   | YES    |       |           |         |        |
-| 14 | creator_level_str   | varchar(10)  | YES    |       |           |         |        |
-| 15 | collector_level     | bigint(20)   | YES    |       |           |         |        |
-| 16 | collector_level_str | varchar(10)  | YES    |       |           |         |        |
-| 17 | curator_level       | bigint(20)   | YES    |       |           |         |        |
-| 18 | curator_level_str   | varchar(10)  | YES    |       |           |         |        |
+|  1 | handle              | varchar(255) | YES    | MUL   |           |         |        |
+|  2 | insert_date         | varchar(10)  | NO     | PRI   |           |         |        |
+|  3 | overall_level_str   | varchar(10)  | YES    |       |           |         |        |
+|  4 | overall_level       | bigint(20)   | YES    |       |           |         |        |
+|  5 | overall_level_rank  | bigint(20)   | YES    |       |           |         |        |
+|  6 | overall_level_score | double       | YES    |       |           |         |        |
+|  7 | address             | varchar(200) | YES    |       |           |         |        |
+|  8 | influ_level         | bigint(20)   | YES    |       |           |         |        |
+|  9 | influ_level_str     | varchar(10)  | YES    |       |           |         |        |
+| 10 | compaign_level      | bigint(20)   | YES    |       |           |         |        |
+| 11 | engager_level       | bigint(20)   | YES    |       |           |         |        |
+| 12 | compaign_level_str  | varchar(10)  | YES    |       |           |         |        |
+| 13 | engager_level_str   | varchar(10)  | YES    |       |           |         |        |
+| 14 | creator_level       | bigint(20)   | YES    |       |           |         |        |
+| 15 | creator_level_str   | varchar(10)  | YES    |       |           |         |        |
+| 16 | collector_level     | bigint(20)   | YES    |       |           |         |        |
+| 17 | collector_level_str | varchar(10)  | YES    |       |           |         |        |
+| 18 | curator_level       | bigint(20)   | YES    |       |           |         |        |
+| 19 | curator_level_str   | varchar(10)  | YES    |       |           |         |        |
