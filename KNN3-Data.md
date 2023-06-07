@@ -197,11 +197,10 @@
 |  4 | rootProfileId | bigint(20)   | YES    | MUL   |           |         |        |
 |  5 | rootPubId     | int(11)      | YES    | MUL   |           |         |        |
 |  6 | contentURI    | text         | YES    |       |           |         |        |
-|  7 | content       | longtext     | YES    |       |           |         |        |
-|  8 | rootAddress   | varchar(255) | YES    | MUL   |           |         |        |
-|  9 | rootHandle    | varchar(255) | YES    | MUL   |           |         |        |
-| 10 | type          | varchar(255) | YES    |       |           |         |        |
-| 11 | timestamp     | int(11)      | YES    | MUL   |           |         |        |
+|  7 | rootAddress   | varchar(255) | YES    | MUL   |           |         |        |
+|  8 | rootHandle    | varchar(255) | YES    | MUL   |           |         |        |
+|  9 | type          | varchar(255) | YES    |       |           |         |        |
+| 10 | timestamp     | int(11)      | YES    | MUL   |           |         |        |
 ### 4.6 lens_publication_mirror_view
 |    | Field         | Type         | Null   | Key   | Default   | Extra   | Desc   |
 |---:|:--------------|:-------------|:-------|:------|:----------|:--------|:-------|
