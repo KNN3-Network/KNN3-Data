@@ -157,11 +157,11 @@ select
   pr_rank_creator as creator_rank,
   pr_rank_engager as engager_rank,
   curator_rank,
-  insert_date
+  create_date
 from
   lens_overall_score_view
 where
-  insert_date >= current_date() - INTERVAL 7 DAY
+  create_date >= current_date() - INTERVAL 7 DAY
   and handle = 'knn3_network.lens'
 ```
 
@@ -201,6 +201,6 @@ from
     from
       lens_overall_level_view
     where
-      insert_date = current_date()
+      create_date = current_date()
   ) t2 on t1.follower = t2.handle
 ```

@@ -265,13 +265,13 @@
 | 29 | curator_rank              | bigint(20)   | YES    | MUL   |           |         |        |
 | 30 | overall_score             | double       | YES    |       |           |         |        |
 | 31 | overall_rank              | bigint(20)   | YES    | MUL   |           |         |        |
-| 32 | insert_date               | varchar(10)  | NO     | PRI   |           |         |        |
+| 32 | create_date               | varchar(10)  | NO     | PRI   |           |         |        |
 ### 4.9 lens_overall_level_view
 |    | Field               | Type         | Null   | Key   | Default   | Extra   | Desc   |
 |---:|:--------------------|:-------------|:-------|:------|:----------|:--------|:-------|
 |  0 | profileId           | varchar(200) | NO     | PRI   |           |         |        |
 |  1 | handle              | varchar(255) | YES    | MUL   |           |         |        |
-|  2 | insert_date         | varchar(10)  | NO     | PRI   |           |         |        |
+|  2 | create_date         | varchar(10)  | NO     | PRI   |           |         |        |
 |  3 | overall_level_str   | varchar(10)  | YES    |       |           |         |        |
 |  4 | overall_level       | bigint(20)   | YES    |       |           |         |        |
 |  5 | overall_level_rank  | bigint(20)   | YES    |       |           |         |        |
