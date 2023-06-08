@@ -168,8 +168,11 @@ where
 ### 2.5 Follower quality on Lens
 ``` sql
 select
-  t1.*,
-  t2.influence_level,
+  followee,
+  follower,
+  follower_id,
+  follower_address,
+  influence_level,
   collector_level,
   engager_level,
   campaign_level,
