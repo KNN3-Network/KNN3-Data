@@ -17,8 +17,8 @@
   - [4.Lens](#)
     - [4.1 lens_profile_view](#41-lens_profile_view)
     - [4.2 lens_follow_view](#42-lens_follow_view)
-    - [4.3 lens_post_view](#43-lens_post_view)
-    - [4.4 lens_publication_view](#44-lens_publication_view)
+    - [4.3 lens_publication_view](#43-lens_publication_view)
+    - [4.4 lens_publication_summary_view](#44-lens_publication_summary_view)
     - [4.5 lens_publication_comment_view](#45-lens_publication_comment_view)
     - [4.6 lens_publication_mirror_view](#46-lens_publication_mirror_view)
     - [4.7 lens_publication_post_view](#47-lens_publication_post_view)
@@ -138,14 +138,14 @@
 | 12 | created         | timestamp    | YES    | MUL   |           |         |        |
 ## 4. Lens
 ### 4.1 lens_profile_view
-|    | Field     | Type         | Null   | Key   | Default   | Extra   | Desc   |
-|---:|:----------|:-------------|:-------|:------|:----------|:--------|:-------|
-|  0 | profileId | bigint(20)   | NO     | PRI   |           |         |        |
-|  1 | metadata  | text         | YES    |       |           |         |        |
-|  2 | handle    | varchar(255) | YES    | MUL   |           |         |        |
-|  3 | address   | varchar(255) | YES    | MUL   |           |         |        |
-|  4 | imageURI  | text         | YES    |       |           |         |        |
-|  5 | timestamp | int(11)      | YES    | MUL   |           |         |        |
+|    | Field       | Type         | Null   | Key   | Default   | Extra   | Desc   |
+|---:|:------------|:-------------|:-------|:------|:----------|:--------|:-------|
+|  0 | profileId   | bigint(20)   | NO     | PRI   |           |         |        |
+|  1 | metadata    | text         | YES    |       |           |         |        |
+|  2 | handle      | varchar(255) | YES    | MUL   |           |         |        |
+|  3 | address     | varchar(255) | YES    | MUL   |           |         |        |
+|  4 | imageURI    | text         | YES    |       |           |         |        |
+|  5 | create_date | date         | YES    |       |           |         |        |
 ### 4.2 lens_follow_view
 |    | Field            | Type         | Null   | Key   | Default   | Extra   | Desc   |
 |---:|:-----------------|:-------------|:-------|:------|:----------|:--------|:-------|
@@ -155,26 +155,8 @@
 |  3 | followee_id      | bigint(20)   | YES    | PRI   |           |         |        |
 |  4 | followee_address | varchar(255) | YES    | MUL   |           |         |        |
 |  5 | followee         | varchar(255) | YES    | MUL   |           |         |        |
-|  6 | timestamp        | int(11)      | YES    | MUL   |           |         |        |
-### 4.3 lens_post_view
-|    | Field               | Type         | Null   | Key   | Default   | Extra   | Desc   |
-|---:|:--------------------|:-------------|:-------|:------|:----------|:--------|:-------|
-|  0 | user_id             | bigint(20)   | NO     | PRI   |           |         |        |
-|  1 | address             | varchar(255) | YES    | MUL   |           |         |        |
-|  2 | user                | varchar(255) | YES    | MUL   |           |         |        |
-|  3 | in_reply_to_user_id | bigint(20)   | YES    | MUL   |           |         |        |
-|  4 | in_reply_to_post_id | int(11)      | YES    | MUL   |           |         |        |
-|  5 | post_id             | int(11)      | NO     | PRI   |           |         |        |
-|  6 | content_URI         | text         | YES    |       |           |         |        |
-|  7 | in_reply_to_address | varchar(255) | YES    | MUL   |           |         |        |
-|  8 | in_reply_to_user    | varchar(255) | YES    | MUL   |           |         |        |
-|  9 | timestamp           | int(11)      | YES    | MUL   |           |         |        |
-| 10 | type                | varchar(255) | YES    |       |           |         |        |
-| 11 | comment_count       | bigint(21)   | YES    |       |           |         |        |
-| 12 | mirror_count        | bigint(21)   | YES    |       |           |         |        |
-| 13 | image               | varchar(255) | YES    |       |           |         |        |
-| 14 | imageMimeType       | varchar(255) | YES    |       |           |         |        |
-### 4.4 lens_publication_view
+|  6 | create_date      | date         | YES    |       |           |         |        |
+### 4.3 lens_publication_view
 |    | Field         | Type         | Null   | Key   | Default   | Extra   | Desc   |
 |---:|:--------------|:-------------|:-------|:------|:----------|:--------|:-------|
 |  0 | profileId     | bigint(20)   | NO     | PRI   |           |         |        |
@@ -187,6 +169,25 @@
 |  7 | rootAddress   | varchar(255) | YES    | MUL   |           |         |        |
 |  8 | rootHandle    | varchar(255) | YES    | MUL   |           |         |        |
 |  9 | type          | varchar(255) | YES    |       |           |         |        |
+| 10 | create_date   | date         | YES    |       |           |         |        |
+### 4.4 lens_publication_summary_view
+|    | Field                  | Type         | Null   | Key   | Default   | Extra   | Desc   |
+|---:|:-----------------------|:-------------|:-------|:------|:----------|:--------|:-------|
+|  0 | profile_id             | bigint(20)   | NO     | PRI   |           |         |        |
+|  1 | address                | varchar(255) | YES    | MUL   |           |         |        |
+|  2 | handle                 | varchar(255) | YES    | MUL   |           |         |        |
+|  3 | in_reply_to_profile_id | bigint(20)   | YES    | MUL   |           |         |        |
+|  4 | in_reply_to_pub_id     | int(11)      | YES    | MUL   |           |         |        |
+|  5 | pub_id                 | int(11)      | NO     | PRI   |           |         |        |
+|  6 | content_URI            | text         | YES    |       |           |         |        |
+|  7 | in_reply_to_address    | varchar(255) | YES    | MUL   |           |         |        |
+|  8 | in_reply_to_handle     | varchar(255) | YES    | MUL   |           |         |        |
+|  9 | create_date            | date         | YES    |       |           |         |        |
+| 10 | type                   | varchar(255) | YES    |       |           |         |        |
+| 11 | comment_count          | bigint(21)   | YES    |       |           |         |        |
+| 12 | mirror_count           | bigint(21)   | YES    |       |           |         |        |
+| 13 | image                  | varchar(255) | YES    |       |           |         |        |
+| 14 | imageMimeType          | varchar(255) | YES    |       |           |         |        |
 ### 4.5 lens_publication_comment_view
 |    | Field         | Type         | Null   | Key   | Default   | Extra   | Desc   |
 |---:|:--------------|:-------------|:-------|:------|:----------|:--------|:-------|
@@ -200,7 +201,7 @@
 |  7 | rootAddress   | varchar(255) | YES    | MUL   |           |         |        |
 |  8 | rootHandle    | varchar(255) | YES    | MUL   |           |         |        |
 |  9 | type          | varchar(255) | YES    |       |           |         |        |
-| 10 | timestamp     | int(11)      | YES    | MUL   |           |         |        |
+| 10 | create_date   | date         | YES    |       |           |         |        |
 ### 4.6 lens_publication_mirror_view
 |    | Field         | Type         | Null   | Key   | Default   | Extra   | Desc   |
 |---:|:--------------|:-------------|:-------|:------|:----------|:--------|:-------|
@@ -214,7 +215,7 @@
 |  7 | rootAddress   | varchar(255) | YES    | MUL   |           |         |        |
 |  8 | rootHandle    | varchar(255) | YES    | MUL   |           |         |        |
 |  9 | type          | varchar(255) | YES    |       |           |         |        |
-| 10 | timestamp     | int(11)      | YES    | MUL   |           |         |        |
+| 10 | create_date   | date         | YES    |       |           |         |        |
 ### 4.7 lens_publication_post_view
 |    | Field         | Type         | Null   | Key   | Default   | Extra   | Desc   |
 |---:|:--------------|:-------------|:-------|:------|:----------|:--------|:-------|
@@ -228,7 +229,7 @@
 |  7 | rootAddress   | varchar(255) | YES    | MUL   |           |         |        |
 |  8 | rootHandle    | varchar(255) | YES    | MUL   |           |         |        |
 |  9 | type          | varchar(255) | YES    |       |           |         |        |
-| 10 | timestamp     | int(11)      | YES    | MUL   |           |         |        |
+| 10 | create_date   | date         | YES    |       |           |         |        |
 ### 4.8 lens_overall_score_view
 |    | Field                     | Type         | Null   | Key   | Default   | Extra   | Desc   |
 |---:|:--------------------------|:-------------|:-------|:------|:----------|:--------|:-------|

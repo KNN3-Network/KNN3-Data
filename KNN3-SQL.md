@@ -85,13 +85,13 @@ group by
 ### 2.1 Top 10 commented publications on Lens
 ``` sql
 select
-  post_id,
+  pub_id,
   COALESCE(comment_count, 0) AS comment_count,
   type
 from
-  lens_post_view
+  lens_publication_summary_view
 where
-  user = 'knn3_network.lens'
+  handle = 'knn3_network.lens'
 order by
   comment_count desc
 limit
@@ -101,13 +101,13 @@ limit
 ### 2.2 Top 10 mirrored publications on Lens
 ``` sql
 select
-  post_id,
+  pub_id,
   COALESCE(mirror_count, 0) AS mirror_count,
   type
 from
-  lens_post_view
+  lens_publication_summary_view
 where
-  user = 'knn3_network.lens'
+  handle = 'knn3_network.lens'
 order by
   mirror_count desc
 limit
@@ -117,7 +117,7 @@ limit
 ### 2.3 Number of publications over time
 ``` sql
 SELECT
-  DATE(from_unixtime(timestamp)) as date,
+  create_date,
   SUM(
     CASE
       WHEN type = 'Post' THEN 1
@@ -137,14 +137,14 @@ SELECT
     END
   ) as comments
 FROM
-  lens_post_view
+  lens_publication_summary_view
 WHERE
-  user = 'stani.lens'
-  AND from_unixtime(timestamp) > NOW() - INTERVAL '1' MONTH
+  handle = 'stani.lens'
+  AND create_date > NOW() - INTERVAL '1' MONTH
 GROUP BY
-  DATE(from_unixtime(timestamp))
+  create_date
 ORDER BY
-  DATE(from_unixtime(timestamp))
+  create_date
 ```
 ### 2.4 Lens handle ranks over time
 ``` sql
