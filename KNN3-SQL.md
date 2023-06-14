@@ -8,9 +8,9 @@ SQL templates provided by K.Transformer are pre-built examples that can be used 
     - [1.4 Get spaces where an address is admin](#14-get-spaces-where-an-address-is-admin)
     - [1.5 Get space stats over time](#15-get-space-stats-over-time)
   - [2 Lens Protocol](#2-lens-protocol)
-    - [2.1 Top 10 commented publications on Lens](#21-top-10-commented-publications-on-lens)
-    - [2.2 Top 10 mirrored publications on Lens](#22-top-10-mirrored-publications-on-lens)
-    - [2.3 Number of publications over time](#23-number-of-publications-over-time)
+    - [2.1 Top commented Lens publications of a handle](#21-top-commented-lens-publications-of-a-handle)
+    - [2.2 Top mirrored Lens publications of a handle](#22-top-mirrored-lens-publications-of-a-handle)
+    - [2.3 Number of Lens publications of a handle over time](#23-number-of-lens-publications-of-a-handle-over-time)
     - [2.4 Lens handle ranks over time](#24-lens-handle-ranks-over-time)
     - [2.5 Follower quality on Lens](#25-follower-quality-on-lens)
 
@@ -82,7 +82,7 @@ group by
 ```
 
 ## 2 Lens Protocol
-### 2.1 Top 10 commented publications of a handle on Lens
+### 2.1 Top commented Lens publications of a handle
 ``` sql
 select
   profile_id,
@@ -102,7 +102,7 @@ limit
   10
 ```
 
-### 2.2 Top 10 mirrored publications of a handle on Lens
+### 2.2 Top mirrored Lens publications of a handle
 ``` sql
 select
   profile_id,
@@ -122,7 +122,7 @@ limit
   10
 ```
 
-### 2.3 Number of publications of a handle over time
+### 2.3 Number of Lens publications of a handle over time
 ``` sql
 SELECT
   create_date,
