@@ -1,20 +1,20 @@
 # KNN3 SQL Templates
 SQL templates provided by K.Transformer are pre-built examples that can be used directly or modified to fit your specific query needs. They serve as a starting point for creating SQL queries using the K.Transformer SQL editor. By using pre-existing templates, you can save time and reduce errors when constructing complex SQL queries. Additionally, our AI-assisted SQL construction feature can help users generate SQL queries more efficiently.
 ## Contents
-  - [1.Snapshot](#1-snapshot)
+  - [1 Snapshot](#1-snapshot)
     - [1.1 Number of spaces address proposed in](#11-number-of-spaces-address-proposed-in)
     - [1.2 Number of spaces address voted in](#12-number-of-spaces-address-voted-in)
     - [1.3 Number of proposals of an address in space](#13-number-of-proposals-of-an-address-in-space)
     - [1.4 Get spaces where an address is admin](#14-get-spaces-where-an-address-is-admin)
     - [1.5 Get space stats over time](#15-get-space-stats-over-time)
-  - [2.Lens Protocol](#2-lens-protocol)
+  - [2 Lens Protocol](#2-lens-protocol)
     - [2.1 Top 10 commented publications on Lens](#21-top-10-commented-publications-on-lens)
     - [2.2 Top 10 mirrored publications on Lens](#22-top-10-mirrored-publications-on-lens)
     - [2.3 Number of publications over time](#23-number-of-publications-over-time)
     - [2.4 Lens handle ranks over time](#24-lens-handle-ranks-over-time)
     - [2.5 Follower quality on Lens](#25-follower-quality-on-lens)
 
-## 1. Snapshot
+## 1 Snapshot
 ### 1.1 Number of spaces address proposed in
 ``` sql
 select
@@ -81,11 +81,15 @@ group by
   date(created)
 ```
 
-## 2. Lens Protocol
-### 2.1 Top 10 commented publications on Lens
+## 2 Lens Protocol
+### 2.1 Top 10 commented publications of a handle on Lens
 ``` sql
 select
+  profile_id,
   pub_id,
+  concat(case when mod(length(HEX(profile_id)),2)=1 then lower(concat('0x0', HEX(profile_id))) else lower(concat('0x', HEX(profile_id))) end,'-',
+  case when mod(length(HEX(pub_id)),2)=1 then lower(concat('0x0', HEX(pub_id))) else lower(concat('0x', HEX(pub_id))) end) as request_id,
+  content_URI,
   COALESCE(comment_count, 0) AS comment_count,
   type
 from
@@ -98,10 +102,14 @@ limit
   10
 ```
 
-### 2.2 Top 10 mirrored publications on Lens
+### 2.2 Top 10 mirrored publications of a handle on Lens
 ``` sql
 select
+  profile_id,
   pub_id,
+  concat(case when mod(length(HEX(profile_id)),2)=1 then lower(concat('0x0', HEX(profile_id))) else lower(concat('0x', HEX(profile_id))) end,'-',
+  case when mod(length(HEX(pub_id)),2)=1 then lower(concat('0x0', HEX(pub_id))) else lower(concat('0x', HEX(pub_id))) end) as request_id,
+  content_URI,
   COALESCE(mirror_count, 0) AS mirror_count,
   type
 from
@@ -114,7 +122,7 @@ limit
   10
 ```
 
-### 2.3 Number of publications over time
+### 2.3 Number of publications of a handle over time
 ``` sql
 SELECT
   create_date,
